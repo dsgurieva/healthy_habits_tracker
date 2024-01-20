@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class HabitsListAPIView(generics.ListAPIView):
+    """Вывод привычек пользователя"""
     serializer_class = HabitsSerializer
     queryset = Habits.objects.all()
     pagination_class = HabitsPagination
@@ -17,22 +18,26 @@ class HabitsListAPIView(generics.ListAPIView):
 
 
 class HabitsCreateAPIView(generics.CreateAPIView):
+    """Создание привычки"""
     serializer_class = HabitsSerializer
     permission_classes = [IsAuthenticated]
 
 
 class HabitsRetrieveAPIView(generics.RetrieveAPIView):
+    """Вывод отдельной привычеки пользователя"""
     serializer_class = HabitsSerializer
     queryset = Habits.objects.all()
     permission_classes = [IsAuthenticated | IsOwner]
 
 
 class HabitsUpdateAPIView(generics.UpdateAPIView):
+    """Обновление привычки пользователя"""
     serializer_class = HabitsSerializer
     queryset = Habits.objects.all()
     permission_classes = [IsAuthenticated | IsOwner]
 
 
 class HabitsDestroyAPIView(generics.DestroyAPIView):
+    """Удаление привычки пользователя"""
     queryset = Habits.objects.all()
     permission_classes = [IsAuthenticated | IsOwner]
