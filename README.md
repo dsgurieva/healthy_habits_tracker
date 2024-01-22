@@ -1,4 +1,4 @@
-"Healthy_habits_tracker" 
+# "Healthy_habits_tracker" 
 
 В данном проекте реализован трекер полезных привычек.
 
@@ -6,28 +6,30 @@
 
 Установка и настройка сервиса Для начала работы нужно клонировать репозиторий, создать и активировать виртуальное окружение:
 
-python3 -m venv venv sourse venv/bin/activate
+* python3 -m venv venv sourse venv/bin/activate
 
 Установить зависимости:
 
-pip install -r requirements.txt
+* pip install -r requirements.txt
 
 Для работы с переменным окружением необходимо создать файл .env и заполнить его на основе файла .env.sample
 
 Выполнить миграции:
 
-python3 manage.py makemigrations python3 manage.py migrate
+* python3 manage.py makemigrations 
+* python3 manage.py migrate
 
 Для создания суперпользователя для работы с админкой запустить команду:
 
-python3 manage.py csu
+* python3 manage.py csu
 
 Описание В проекте реализован интерфейс для авторизации и входа пользователя, разграничены права доступа авторизованных и не авторизованных пользователей; 
-python3 manage.py runserver
+
+* python3 manage.py runserver
 
 Зарегестрированный пользователь создает привычку, телеграм бот присылает уведомления с напоминанием выполнить привычку.
 Для запуска переодических задач используйте команды: 
 
-celery -A config worker —l INFO 
-celery -A config beat -l info -S django
+* celery -A config worker —l INFO 
+* celery -A config beat -l info -S django
 
