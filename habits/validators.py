@@ -10,9 +10,10 @@ class LinkedAndAwardValidator:
     def __call__(self, value):
         habit_link_valid = dict(value).get('habit_link')
         award_valid = dict(value).get('award')
-        
         if habit_link_valid and award_valid:
-            raise ValidationError('Вы не можете выбрать связанную привычку и вознаграждение одновременно.')
+            raise ValidationError(
+                'Вы не можете выбрать связанную привычку и вознаграждение одновременно.'
+            )
 
 
 class TimeAwardValidator:
@@ -24,7 +25,9 @@ class TimeAwardValidator:
         limit_time_valid = dict(value).get(self.limit_time)
 
         if isinstance(limit_time_valid, int) and limit_time_valid > 120:
-            raise ValidationError('Время выполнения должно составлять не более 120 секунд.')
+            raise ValidationError(
+                'Время выполнения должно составлять не более 120 секунд.'
+            )
 
 
 class LinkedHabitIsGoodValidator:
@@ -56,7 +59,9 @@ class GoodHabitValidator:
         award_valid = dict(value).get(self.award)
 
         if good_habit_valid and habit_link_valid or good_habit_valid and award_valid:
-            raise ValidationError('У приятной привычки не может быть вознаграждения или связанной привычки.')
+            raise ValidationError(
+                'У приятной привычки не может быть вознаграждения или связанной привычки.'
+            )
 
 
 class HabitPeriodValidator:
@@ -68,4 +73,6 @@ class HabitPeriodValidator:
         periodicity_valid = dict(value).get(self.periodicity)
 
         if isinstance(periodicity_valid, int) and periodicity_valid < 7:
-            raise ValidationError('Вы не можете выполнять эту привычку реже одного раза в 7 дней.')
+            raise ValidationError(
+                'Вы не можете выполнять эту привычку реже одного раза в 7 дней.'
+            )

@@ -18,7 +18,8 @@ def get_message_data():
         if updates['ok']:
             parse_updates(updates['result'])
         chat_id = User.objects.get(telegram=habit.owner.telegram).chat_id
-        text = f'Сегодня вам необходимо выполнить {habit.action} в {habit.time}. Место выполнения: {habit.location}'
+        text = (f'Сегодня вам необходимо выполнить {habit.action} в {habit.time}. '
+                f'Место выполнения: {habit.location}')
         send_message(text, chat_id)
 
         habit.time += timedelta(days=habit.periodicity)

@@ -4,7 +4,8 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from users.apps import UsersConfig
-from users.views import UserCreateAPIView, UserUpdateAPIView, UserDestroyApiView
+from users.views import (UserCreateAPIView, UserUpdateAPIView,
+                         UserDestroyApiView)
 
 app_name = UsersConfig.name
 

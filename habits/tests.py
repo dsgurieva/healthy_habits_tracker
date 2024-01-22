@@ -4,6 +4,7 @@ from rest_framework.test import APITestCase
 from habits.models import Habits
 from users.models import User
 
+
 class HabitsTestCase(APITestCase):
     def create_user(self):
         """Создание пользователя"""
@@ -20,10 +21,9 @@ class HabitsTestCase(APITestCase):
         self.create_user()
 
         self.habits = Habits.objects.create(
-            action='habits test',
-            periodicity='1',
+            action="habits test",
+            periodicity="1",
             limit_time="10"
-            #owner=self.user
         )
 
     def test_list_habits(self):
