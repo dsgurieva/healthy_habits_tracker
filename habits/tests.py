@@ -42,16 +42,16 @@ class HabitsTestCase(APITestCase):
             response.json(),
             {
                 "id": 1,
-                "location": null,
-                "time": null,
+                "location": "null",
+                "time": "null",
                 "action": "habits test",
-                "good_habit": false,
+                "good_habit": "false",
                 "periodicity": 1,
-                "award": null,
+                "award": "null",
                 "limit_time": 10,
-                "public": false,
+                "public": "false",
                 "owner": 2,
-                "habit_link": null
+                "habit_link": "null"
             }
         )
 

@@ -12,7 +12,8 @@ class LinkedAndAwardValidator:
         award_valid = dict(value).get('award')
         if habit_link_valid and award_valid:
             raise ValidationError(
-                'Вы не можете выбрать связанную привычку и вознаграждение одновременно.'
+                'Вы не можете выбрать связанную '
+                'привычку и вознаграждение одновременно.'
             )
 
 
@@ -42,7 +43,8 @@ class LinkedHabitIsGoodValidator:
             habit = Habits.objects.get(pk=habit_link_valid.id)
             if not habit.good_habit:
                 raise ValidationError(
-                    'В связанные привычки могут попадать только привычки с признаком приятной привычки.'
+                    'В связанные привычки могут попадать только'
+                    ' привычки с признаком приятной привычки.'
                 )
 
 
@@ -58,9 +60,13 @@ class GoodHabitValidator:
         habit_link_valid = dict(value).get(self.habit_link)
         award_valid = dict(value).get(self.award)
 
-        if good_habit_valid and habit_link_valid or good_habit_valid and award_valid:
+        if (good_habit_valid
+                and habit_link_valid
+                or good_habit_valid
+                and award_valid):
             raise ValidationError(
-                'У приятной привычки не может быть вознаграждения или связанной привычки.'
+                'У приятной привычки не может быть '
+                'вознаграждения или связанной привычки.'
             )
 
 
@@ -74,5 +80,6 @@ class HabitPeriodValidator:
 
         if isinstance(periodicity_valid, int) and periodicity_valid < 7:
             raise ValidationError(
-                'Вы не можете выполнять эту привычку реже одного раза в 7 дней.'
+                'Вы не можете выполнять эту '
+                'привычку реже одного раза в 7 дней.'
             )

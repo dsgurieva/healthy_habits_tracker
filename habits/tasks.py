@@ -11,14 +11,17 @@ def get_message_data():
     time_now = datetime.now()
     start_time = time_now - timedelta(minutes=10)
     finish_time = time_now + timedelta(minutes=10)
-    habits = Habits.objects.filter(time__gte=start_time).filter(time__lte=finish_time)
+    habits = Habits.objects.filter(
+        time__gte=start_time).filter(
+        time__lte=finish_time)
 
     for habit in habits:
         updates = get_updates()
         if updates['ok']:
             parse_updates(updates['result'])
         chat_id = User.objects.get(telegram=habit.owner.telegram).chat_id
-        text = (f'Сегодня вам необходимо выполнить {habit.action} в {habit.time}. '
+        text = (f'Сегодня вам необходимо выполнить '
+                f'{habit.action} в {habit.time}. '
                 f'Место выполнения: {habit.location}')
         send_message(text, chat_id)
 
